@@ -1,7 +1,34 @@
-const button = document.getElementById('gerador');
 
 
+function gerar() {
+    var quantidade = parseInt(document.getElementById('quantidade').value)
+    var minimo = parseInt(document.getElementById('minimo').value)
+    var maximo = parseInt(document.getElementById('maximo').value)
+    var numeros = [];
+
+    while(numeros.length < quantidade){
+        var aleatorio = Math.floor(Math.random()*(maximo - minimo)+minimo);
+        if(numeros.indexOf(aleatorio) == -1)
+        numeros.push(aleatorio);
+    }
+    document.querySelector('#sorteio > span1').textContent = numeros;
+    achaSegundoMaior();
+}
+
+function achaSegundoMaior(){
+    document.querySelector('#segundoMaior > span2').textContent = minimo;
+}
+
+
+
+
+
+
+
+
+/*
 //evento de click, pegando valores dos inputs
+const button = document.getElementById('gerador');
 button.addEventListener('click', function(){
     const quantidade = parseInt(document.getElementById('quantidade').value)
     const minimo = parseInt(document.getElementById('minimo').value)
@@ -29,6 +56,7 @@ button.addEventListener('click', function(){
              //mostra na tela o segundo maior número
             document.querySelector('#segundoMaior > span2').textContent = segundoMaior;
     
-
-    
 });
+
+*/
+
