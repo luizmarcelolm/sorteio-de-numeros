@@ -1,23 +1,40 @@
+//variáveis digitadas pelo usuário
+var minimo = document.getElementById('minimo')
+var maximo = document.getElementById('maximo')
+var quantidade = document.getElementById('quantidade')
+var numeros=[];
+
+        //função que cria números aleatórios
+        const gerarNumeros = () => {
+            while(numeros.length < parseInt(quantidade.value)){
+                var aleatorio = Math.floor(Math.random()*(parseInt(maximo.value) - parseInt(minimo.value)) + parseInt(minimo.value));
+                if(numeros.indexOf(aleatorio) == -1)
+                numeros.push(aleatorio);
+            }
+            document.querySelector('#sorteio > span1').textContent = numeros;
+            acharSegundoMaior();
+        } 
+
+        //função de acha o segundo maior número da lista
+        const acharSegundoMaior = () =>{
+        var maior = numeros[0]; 
+         
+
+                for (i = 1; i < numeros.length; i++) {                  
+                    var atual = numeros[i];
+                    if( maior > atual)
+                       maior = maior;
+                       auxiliar = atual;
+                    if( maior < atual)
+                       maior = atual;
+                }        
+                    document.querySelector('#segundoMaior > span2').textContent = maior;
+        }
 
 
-function gerar() {
-    var quantidade = parseInt(document.getElementById('quantidade').value)
-    var minimo = parseInt(document.getElementById('minimo').value)
-    var maximo = parseInt(document.getElementById('maximo').value)
-    var numeros = [];
 
-    while(numeros.length < quantidade){
-        var aleatorio = Math.floor(Math.random()*(maximo - minimo)+minimo);
-        if(numeros.indexOf(aleatorio) == -1)
-        numeros.push(aleatorio);
-    }
-    document.querySelector('#sorteio > span1').textContent = numeros;
-    achaSegundoMaior();
-}
 
-function achaSegundoMaior(){
-    document.querySelector('#segundoMaior > span2').textContent = minimo;
-}
+
 
 
 
@@ -27,6 +44,18 @@ function achaSegundoMaior(){
 
 
 /*
+ const acharSegundoMaior = () =>{
+        var maior = numeros[0];
+
+                for ( i = 1; i < numeros.length; i++) {
+                    var posicao = numeros[i];
+                    if( posicao > maior)
+                    maior = posicao;
+                }
+                    document.querySelector('#segundoMaior > span2').textContent = maior;
+        }
+
+
 //evento de click, pegando valores dos inputs
 const button = document.getElementById('gerador');
 button.addEventListener('click', function(){
